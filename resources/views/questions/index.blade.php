@@ -1,15 +1,6 @@
 
 <!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -20,7 +11,12 @@
                    @foreach ($questions as $question)
                         <div class="media">
                             <div class="media-body">
-                                <h3 class="mt-0">{{ $question->title }}</h3>
+                                <h3 class="mt-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
+                                <p class="lead">
+                                    Asked by 
+                                    <a href="{{ $question->user->url }}">{{ $question->user->name }}</a> 
+                                    <small class="text-muted">{{ $question->created_date }}</small>
+                                </p>
                                 {{ Str::limit($question->body, 250) }}
                             </div>                        
                         </div>
